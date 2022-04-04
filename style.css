@@ -41,6 +41,12 @@ ul li a {
     display: none;
 }
 
+footer {
+    width: 100%;
+    background: #04788a;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     .toggle {
         display : block;
