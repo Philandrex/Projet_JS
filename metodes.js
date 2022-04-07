@@ -4,7 +4,7 @@ function feed(params) {
         newDiv.innerHTML = `<h2>${params[i].title}</h2>
     <img src="${params[i].imageUrl}" alt="une photo" width = "100">
     <p>${params[i].summary}</p>`;
-        document.querySelector("main").append(newDiv);
+        document.querySelector("#feed").append(newDiv);
     }
 }
 
@@ -19,12 +19,13 @@ function checkError(response) {
 function errorMessage(error) {
     let message = document.createElement("div");
     message.innerHTML = error;
-    document.querySelector("main").append(message);
+    document.querySelector("#feed").append(message);
 }
 
 
 function create() {
     const newUrl = "https://api.spaceflightnewsapi.net/v3/articles";
+    document.querySelector("#feed").innerHTML= ""
     fetch(newUrl)
         .then(checkError)
         .then(result => { feed(result) })

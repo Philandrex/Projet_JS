@@ -44,11 +44,12 @@ ul li a {
 main {
     width: 100%;
 }
+
 form {
     border-style: double;
     text-align:center ;
 }
-main div {
+section div {
     border-style: solid;
     margin: 10px;
     padding: 10px;
