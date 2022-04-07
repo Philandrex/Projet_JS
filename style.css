@@ -9,7 +9,7 @@ header {
     background: #04788a;
 }
 
-ul{
+ul {
     width: 80%;
     margin: auto;
     padding: 0;
@@ -22,7 +22,7 @@ ul li {
 }
 
 ul li:hover {
-    background: #082d39 ;
+    background: #082d39;
 }
 
 ul li a {
@@ -41,6 +41,21 @@ ul li a {
     display: none;
 }
 
+main {
+    width: 100%;
+}
+form {
+    border-style: double;
+    text-align:center ;
+}
+main div {
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+    width: 25%;
+    display: inline-block;
+}
+
 footer {
     width: 100%;
     background: #04788a;
@@ -49,23 +64,29 @@ footer {
 
 @media (max-width: 768px) {
     .toggle {
-        display : block;
+        display: block;
     }
 
-ul {
-    width: 100%;
+    ul {
+        width: 100%;
+    }
+
+    ul li {
+        display: block;
+    }
+
+    main div {
+        width: 40%;
+    }
 }
 
-ul li {
-    display: block;
-}
-}
-
-@media (max-width:300px) {
+@media (max-width:375px) {
     ul li {
         padding: 10px;
         text-align: center;
 
     }
-    
+    main div {
+        width: 80%;
+    }
 }
