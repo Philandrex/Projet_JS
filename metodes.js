@@ -1,38 +1,32 @@
 function feed(params) {
     for (let i = 0; i < params.length; i++) {
-        let title = params[i].title;
-        let summary = params[i].summary;
-        let imageUrl = params[i].imageUrl;
-        let $newDiv = $("<div>");
-        $newDiv.html(`<h2>${title}</h2>
-    <img src="${imageUrl}" alt="une photo" width = "100">
-    <p>${summary}</p>`);
-        $("main").append($newDiv);
+        let newDiv = document.createElement("div");
+        newDiv.innerHTML = `<h2>${params[i].title}</h2>
+    <img src="${params[i].imageUrl}" alt="une photo" width = "100">
+    <p>${params[i].summary}</p>`;
+        document.querySelector("main").append(newDiv);
     }
 }
 
-function create() {
-const newUrl = "https://api.spaceflightnewsapi.net/v3/articles" ;
-fetch(newUrl)
-.then(Response=>Response.json())
-.then(result => {
-    feed(result);
-});
-/*
-$.ajax({
-    url: "newUrl",
-    methode: "GET",
-    dataType: "json",
-})
-    .done(function (response) {
-        feed(response);
-    })
-    .fail(function (error) {
-        alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
-    })
-    .always(function () {
-        console.log("Requête effectuée");
-    })
+function checkError(response) {
+    if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+    } else {
+        throw Error(response.statusText);
+    }
+}
 
-*/
+function errorMessage(error) {
+    let message = document.createElement("div");
+    message.innerHTML = error;
+    document.querySelector("main").append(message);
+}
+
+
+function create() {
+    const newUrl = "https://api.spaceflightnewsapi.net/v3/articles";
+    fetch(newUrl)
+        .then(checkError)
+        .then(result => { feed(result) })
+        .catch(error => { errorMessage(error) });
 }
