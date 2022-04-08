@@ -1,16 +1,16 @@
-function feed(params) {
+function feed(params,cible) {
     for (let i = 0; i < params.length; i++) {
         let newDiv = document.createElement("div");
         let title = document.createElement("h2");
         let summary = document.createElement("p");
         let image = document.createElement("img");
         title.innerHTML = `${params[i].title}`;
-        image.setAttribute("src",`${params[i].imageUrl}`);
-        image.setAttribute("alt","une photo");
-        image.setAttribute("width",100);
+        image.setAttribute("src", `${params[i].imageUrl}`);
+        image.setAttribute("alt", "une photo");
+        image.setAttribute("width", 100);
         summary.innerHTML = `${params[i].summary}`;
-        newDiv.append(title,image,summary);
-        document.querySelector("#feed").append(newDiv);
+        newDiv.append(title, image, summary);
+        document.querySelector(cible).append(newDiv);
     }
 }
 
@@ -29,11 +29,11 @@ function errorMessage(error) {
 }
 
 
-function create() {
+function generate() {
     const newUrl = "https://api.spaceflightnewsapi.net/v3/articles";
-    document.querySelector("#feed").innerHTML= ""
+    document.querySelector("#feed").innerHTML = ""
     fetch(newUrl)
         .then(checkError)
-        .then(result => { feed(result) })
+        .then(result => { feed(result,"#feed") })
         .catch(error => { errorMessage(error) });
 }
