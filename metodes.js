@@ -1,9 +1,15 @@
 function feed(params) {
     for (let i = 0; i < params.length; i++) {
         let newDiv = document.createElement("div");
-        newDiv.innerHTML = `<h2>${params[i].title}</h2>
-    <img src="${params[i].imageUrl}" alt="une photo" width = "100">
-    <p>${params[i].summary}</p>`;
+        let title = document.createElement("h2");
+        let summary = document.createElement("p");
+        let image = document.createElement("img");
+        title.innerHTML = `${params[i].title}`;
+        image.setAttribute("src",`${params[i].imageUrl}`);
+        image.setAttribute("alt","une photo");
+        image.setAttribute("width",100);
+        summary.innerHTML = `${params[i].summary}`;
+        newDiv.append(title,image,summary);
         document.querySelector("#feed").append(newDiv);
     }
 }

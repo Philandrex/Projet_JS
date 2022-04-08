@@ -56,7 +56,6 @@ section div {
     width: 25%;
     display: inline-block;
 }
-
 footer {
     width: 100%;
     background: #04788a;
@@ -76,7 +75,7 @@ footer {
         display: block;
     }
 
-    main div {
+    section div {
         width: 40%;
     }
 }
@@ -87,7 +86,7 @@ footer {
         text-align: center;
 
     }
-    main div {
+    section div {
         width: 80%;
     }
 }
