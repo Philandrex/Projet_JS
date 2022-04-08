@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $('.toggle').on('click', () => {
+    $('.toggle').on('click',function() {
         $('nav').toggle();
     });
-    
-    $('.feed').on('click', () => {
+
+    $('.feed').on('click', function() {
         create();
     });
 });
