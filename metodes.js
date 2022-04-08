@@ -37,3 +37,4 @@ function generate() {
         .then(result => { feed(result,"#feed") })
         .catch(error => { errorMessage(error) });
 }
+
