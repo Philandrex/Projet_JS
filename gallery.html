@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
     <header>
         <h1>Mon Super site</h1>
@@ -24,8 +26,28 @@
             </nav>
         </div>
     </header>
-    <main>
-        
+    <main id="myMain">
+        <button id="mosaic" class="btn" >Mosaic</button>
+        <button id="colonne" class="btn active " >Colonne</button>
+        <form action="" method="">
+            <label for="image">Ajouter un image par URL</label><br>
+            <input type="url" name="image" id="image"><br>
+            <button id="imageForm" type="Submit">Ajouter</button>
+        </form>
+        <div id="row" class="row">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">
+                <img src="/raw.jpeg" alt="une photo" width="23vw" class="column">   
+        </div>
     </main>
     <footer>
         <h2>Mon super footer</h2>
@@ -35,4 +57,5 @@
     <!-- <script src="/methodes2.js"></script>  -->
     <script src="/script.js"></script>
 </body>
+
 </html>
