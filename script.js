@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     // generate feed 
     $('.feed').on('click', function () {
-        generate();
+        getElemets();
     });
 
     // toggle form
@@ -26,12 +26,21 @@ $(document).ready(function () {
     // add blog envent
     $("#formBlog").on("click", function (event) {
         event.preventDefault();
-        let table = [{
-            "title": document.getElementById("title").value,
-            "summary": document.getElementById("blog").value,
-            "imageUrl": document.getElementById("url").value,
-        }]
-        feed(table, "#feed");
+        let form = formValidate();
+        if(form == ""){
+            let table = [{
+                "title": document.getElementById("title").value,
+                "summary": document.getElementById("blog").value,
+                "imageUrl": document.getElementById("url").value,
+            }]
+            createElements(table, "#feed");
+        }else{
+            let text = document.createElement("p");
+            text.innerHTML = form ;
+            document.querySelector("form").append(text);
+        };
+
+        
     });
 
     // add image eve,t

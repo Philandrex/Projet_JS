@@ -1,4 +1,6 @@
-function feed(params, cible) {
+
+// get feed elements function
+function createElements(params, cible) {
     for (let i = 0; i < params.length; i++) {
         let newDiv = document.createElement("div");
         let title = document.createElement("h2");
@@ -14,6 +16,7 @@ function feed(params, cible) {
     }
 }
 
+// check error function
 function checkError(response) {
     if (response.status >= 200 && response.status <= 299) {
         return response.json();
@@ -22,23 +25,24 @@ function checkError(response) {
     }
 }
 
-function errorMessage(error) {
+// error message function
+function sendErrorMessage(error) {
     let message = document.createElement("div");
     message.innerHTML = error;
     document.querySelector("#feed").append(message);
 }
 
-
-function generate() {
+// generate feed function
+function getElemets() {
     const newUrl = "https://api.spaceflightnewsapi.net/v3/articles";
     document.querySelector("#feed").innerHTML = ""
     fetch(newUrl)
         .then(checkError)
-        .then(result => { feed(result, "#feed") })
-        .catch(error => { errorMessage(error) });
+        .then(result => { createElements(result, "#feed") })
+        .catch(error => { sendErrorMessage(error) });
 }
 
-
+// colonne function
 function colonne() {
     console.log("je suis dans colonne");
     let elements = document.getElementsByClassName("column");
@@ -47,23 +51,30 @@ function colonne() {
         elements[i].style.flex = "100%";
     }
 }
+
+// mosaic function
 function mosaic() {
     let elements = document.getElementsByClassName("column");
-    console.log(elements);
     for (let i = 0; i < elements.length; i++) {
         elements[i].style.msFlex = "25%";
         elements[i].style.flex = "23%";
     }
 }
+
+// add image function 
 function addImage(imageUrl, cible) {
+    let style =document.getElementsByTagName("img")[0].getAttribute("style");
     let image = document.createElement("img");
     image.setAttribute("src", imageUrl);
     image.setAttribute("alt", "une image à ajouter");
     image.setAttribute("width", "23vw");
     image.setAttribute("class", "column");
     image.setAttribute("id", "added")
+    image.setAttribute("style",style);
     document.querySelector(cible).prepend(image);
 }
+
+// delete image function
 function deleteImage(event) {
     let cible = event.target;
     let id = cible.getAttribute("id");
@@ -71,4 +82,22 @@ function deleteImage(event) {
     cible.remove();
     }
 
+}
+
+// controle form input
+function formValidate(){
+    let msg ="";
+    let title = document.forms["myForm"]["title"].value;
+    let summary = document.forms["myForm"]["blog"].value;
+    let url = document.forms["myForm"]["url"].value;
+if (title.length <6 || title.length > 30 ){
+    msg += "Vous n'avez pas entré un 'title' valide. <br>";
+}  
+if (summary.length<15 || summary.length > 300) {
+    msg += "Vous n'avez pas entré un 'summary' valide <br>";
+}
+if (url == ""){
+    msg += "Vous n'avez pas entré un 'URL' valide";
+}
+return msg;
 }
