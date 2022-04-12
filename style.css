@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +8,8 @@ body {
 }
 
 header {
+    text-align: center;
+    padding: 32px;
     width: 100%;
     background: #04788a;
 }
@@ -49,6 +54,7 @@ form {
     border-style: double;
     text-align:center ;
 }
+
 section div {
     border-style: solid;
     margin: 10px;
@@ -61,6 +67,39 @@ footer {
     background: #04788a;
     text-align: center;
 }
+.row {
+    display: -ms-flexbox;
+    display: flex; 
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.column {
+    -ms-flex: 50%;
+    flex: 50%;
+    margin: 8px;
+    padding: 0 4px;
+}
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+.btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn:hover {
+    background-color: #ddd;
+  }
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
 
 @media (max-width: 768px) {
     .toggle {
