@@ -63,7 +63,7 @@ function mosaic() {
 
 // add image function 
 function addImage(imageUrl, cible) {
-    let style =document.getElementsByTagName("img")[0].getAttribute("style");
+    let style =document.querySelectorAll(".column")[0].getAttribute("style");
     let image = document.createElement("img");
     image.setAttribute("src", imageUrl);
     image.setAttribute("alt", "une image à ajouter");
@@ -101,3 +101,32 @@ if (url == ""){
 }
 return msg;
 }
+
+// nativ carousel
+document.querySelectorAll(".carousel__gallery").forEach(carousel =>{
+
+    const items = carousel.querySelectorAll(".carousel__item__gallery");
+    const buttonsHtml = Array.from(items, () => {
+        return `<span class="carousel__button"></span>`;
+    });
+
+    carousel.insertAdjacentHTML("beforeend", `
+    <div class="carousel__nav">
+        ${buttonsHtml.join("")}
+    </div>
+    `);
+
+    const buttons = carousel.querySelectorAll(".carousel__button");
+
+    buttons.forEach((button,i)=>{
+        button.addEventListener("click", () =>{
+            items.forEach (item => item.classList.remove("carousel__item--selected"));
+            buttons.forEach(button => button.classList.remove("carousel__button--selected"));
+            items[i].classList.add("carousel__item--selected");
+            buttons[i].classList.add("carousel__button--selected");
+        });
+    });
+
+    items[0].classList.add("carousel__item--selected");
+    buttons[0].classList.add("carousel__button--selected");
+});
