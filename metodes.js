@@ -63,7 +63,7 @@ function mosaic() {
 
 // add image function 
 function addImage(imageUrl, cible) {
-    let style =document.getElementsByTagName("img")[0].getAttribute("style");
+    let style =document.querySelectorAll(".column")[0].getAttribute("style");
     let image = document.createElement("img");
     image.setAttribute("src", imageUrl);
     image.setAttribute("alt", "une image à ajouter");
@@ -103,9 +103,9 @@ return msg;
 }
 
 // nativ carousel
-document.querySelectorAll(".carousel").forEach(carousel =>{
+document.querySelectorAll(".carousel__gallery").forEach(carousel =>{
 
-    const items = carousel.querySelectorAll(".carousel__item");
+    const items = carousel.querySelectorAll(".carousel__item__gallery");
     const buttonsHtml = Array.from(items, () => {
         return `<span class="carousel__button"></span>`;
     });

@@ -27,6 +27,7 @@ $(document).ready(function () {
     $("#formBlog").on("click", function (event) {
         event.preventDefault();
         let form = formValidate();
+        document.querySelector(".errorMessage").innerHTML = "";
         if(form == ""){
             let table = [{
                 "title": document.getElementById("title").value,
@@ -35,15 +36,13 @@ $(document).ready(function () {
             }]
             createElements(table, "#feed");
         }else{
-            let text = document.createElement("p");
-            text.innerHTML = form ;
-            document.querySelector("form").append(text);
+            document.querySelector(".errorMessage").innerHTML = form ;
         };
 
         
     });
 
-    // add image eve,t
+    // add image event
     document.getElementById("imageForm").addEventListener("click", function (event) {
         event.preventDefault();
         let imageUrl = document.getElementById("image").value;
